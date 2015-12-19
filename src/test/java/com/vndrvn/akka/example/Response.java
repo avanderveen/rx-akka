@@ -3,8 +3,8 @@ package com.vndrvn.akka.example;
 import lombok.Value;
 
 @Value
-public class Introduction {
+public class Response {
 
-	protected final String name;
+	protected final String message;
 
 }
