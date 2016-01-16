@@ -2,8 +2,10 @@ package com.vndrvn.rx.akka;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import lombok.Getter;
 import rx.Observable;
 
+@Getter
 public class ActorObservable<T> extends Observable<T> {
 
 	protected final ActorRef actorRef;
