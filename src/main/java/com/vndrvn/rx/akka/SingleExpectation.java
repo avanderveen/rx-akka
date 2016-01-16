@@ -11,7 +11,6 @@ import java.util.Set;
 public class SingleExpectation<T> extends SingleSubscriber<T> implements Single.OnSubscribe<T> {
 
 	protected final Set<SingleSubscriber<? super T>> subscribers;
-
 	protected final Class<T> messageClass;
 
 	public SingleExpectation(final Class<T> messageClass) {

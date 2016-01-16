@@ -11,7 +11,6 @@ import java.util.Set;
 public class ObservableExpectation<T> extends Subscriber<T> implements Observable.OnSubscribe<T> {
 
 	protected final Set<Subscriber<? super T>> subscribers;
-
 	protected final Class<T> messageClass;
 
 	public ObservableExpectation(final Class<T> messageClass) {
