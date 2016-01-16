@@ -1,4 +1,4 @@
-package com.vndrvn.akka.resources;
+package com.vndrvn.rx.akka;
 
 import lombok.Getter;
 

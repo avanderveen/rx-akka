@@ -1,4 +1,4 @@
-package com.vndrvn.akka.resources;
+package com.vndrvn.rx.akka;
 
 import lombok.Getter;
 import rx.Single;
@@ -8,13 +8,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class Expectation<T> extends SingleSubscriber<T> implements Single.OnSubscribe<T> {
+public class SingleExpectation<T> extends SingleSubscriber<T> implements Single.OnSubscribe<T> {
 
 	protected final Set<SingleSubscriber<? super T>> subscribers;
 
 	protected final Class<T> messageClass;
 
-	public Expectation(final Class<T> messageClass) {
+	public SingleExpectation(final Class<T> messageClass) {
 		this.subscribers = new HashSet<>();
 		this.messageClass = messageClass;
 	}
@@ -25,13 +25,13 @@ public class Expectation<T> extends SingleSubscriber<T> implements Single.OnSubs
 	}
 
 	@Override
-	public void onSuccess(final T t) {
-		subscribers.forEach(s -> s.onSuccess(t));
+	public void onSuccess(final T message) {
+		subscribers.forEach(s -> s.onSuccess(message));
 	}
 
 	@Override
-	public void onError(final Throwable e) {
-		subscribers.forEach(s -> s.onError(e));
+	public void onError(final Throwable throwable) {
+		subscribers.forEach(s -> s.onError(throwable));
 	}
 
 }
