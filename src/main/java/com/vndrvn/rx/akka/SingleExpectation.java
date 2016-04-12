@@ -4,8 +4,8 @@ import lombok.Getter;
 import rx.Single;
 import rx.SingleSubscriber;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 @Getter
 public class SingleExpectation<T> extends SingleSubscriber<T> implements Single.OnSubscribe<T> {
@@ -14,7 +14,7 @@ public class SingleExpectation<T> extends SingleSubscriber<T> implements Single.
 	protected final Class<T> messageClass;
 
 	public SingleExpectation(final Class<T> messageClass) {
-		this.subscribers = new HashSet<>();
+		this.subscribers = new ConcurrentSkipListSet<>();
 		this.messageClass = messageClass;
 	}
 

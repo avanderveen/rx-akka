@@ -4,8 +4,8 @@ import lombok.Getter;
 import rx.Observable;
 import rx.Subscriber;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 @Getter
 public class ObservableExpectation<T> extends Subscriber<T> implements Observable.OnSubscribe<T> {
@@ -14,7 +14,7 @@ public class ObservableExpectation<T> extends Subscriber<T> implements Observabl
 	protected final Class<T> messageClass;
 
 	public ObservableExpectation(final Class<T> messageClass) {
-		this.subscribers = new HashSet<>();
+		this.subscribers = new ConcurrentSkipListSet<>();
 		this.messageClass = messageClass;
 	}
 
