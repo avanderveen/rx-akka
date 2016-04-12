@@ -10,11 +10,13 @@ import java.util.concurrent.ConcurrentSkipListSet;
 @Getter
 public class ObservableExpectation<T> extends Subscriber<T> implements Observable.OnSubscribe<T> {
 
+	protected static final HashCodeComparator COMPARATOR = new HashCodeComparator();
+
 	protected final Set<Subscriber<? super T>> subscribers;
 	protected final Class<T> messageClass;
 
 	public ObservableExpectation(final Class<T> messageClass) {
-		this.subscribers = new ConcurrentSkipListSet<>();
+		this.subscribers = new ConcurrentSkipListSet<>(COMPARATOR);
 		this.messageClass = messageClass;
 	}
 
